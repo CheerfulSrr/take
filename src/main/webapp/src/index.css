@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.top {
+  border-bottom: 1px solid darkgrey;
+}
+
+.top ul {
+  display: inline-block;
+  height: 25px;
+}
+
+.top ul li {
+  float: left;
+  line-height: 25px;
+  margin-right: 15px;
+}
+
+.new {
+  display: inline-block;
+  width: 60px;
+}
