@@ -3,12 +3,13 @@ const path = require('path');
 const { argv } = require('yargs')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const backendPath = 'http://localhost:8080'
-const assetPath = 'dist';
 
 const {
   mode = 'development',
+  back = false
 } = argv
 
 module.exports = {
@@ -17,7 +18,7 @@ module.exports = {
   output: {
     filename: 'js/[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: 'dist'
+    publicPath: back ? 'dist' : ""
   },
   optimization: {
     moduleIds: 'hashed',
@@ -55,6 +56,9 @@ module.exports = {
     ]
   },
   plugins: [
+    back ? null : new HtmlWebpackPlugin({
+      template: 'public/index.html'
+    }),
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].bundle.css',

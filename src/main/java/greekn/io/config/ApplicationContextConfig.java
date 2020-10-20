@@ -1,4 +1,4 @@
-package greekn.io.context;
+package greekn.io.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

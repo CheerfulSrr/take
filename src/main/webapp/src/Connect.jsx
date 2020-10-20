@@ -1,27 +1,33 @@
-import React, {useState} from 'react';
-import {axios} from "@/utils";
+import React, { useState } from 'react';
+import { axios } from "@/utils";
 
 
-const connect = () => {
+const connect = ()=>{
 
   const [ state, setState ] = useState({
     host: '127.0.0.1',
     port: 6379
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e)=>{
     e.preventDefault()
-    const response = await axios.post("dd").then().catch(err => console.log(err));
+    const response = await axios.post("dd").then().catch(err=>console.log(err));
     console.log(state)
   }
 
-  const setValue = (e) => {
+  const setValue = (e)=>{
     setState({ ...state, [e.target.name]: e.target.value })
+  }
+
+  const handlePing = async (e)=>{
+    await axios.post("/connect/ping", state).then(res=>{
+      console.log(res)
+    }).catch(err=>console.log(err));
   }
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form>
         <span className="new">Host:</span>
         <input type="text"
                name="host"
@@ -48,9 +54,9 @@ const connect = () => {
                onChange={setValue}
         />
         <br/>
-        <input type="submit" value="提交"/>
+        <input type="button" onClick={handleSubmit} value="submit"/>
+        <input type="button" onClick={handlePing} value="ping"/>
       </form>
-      <button onClick={() => console.log(`button`)}>ddd</button>
     </div>
   )
 }

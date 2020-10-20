@@ -1,4 +1,4 @@
-package greekn.io.web;
+package greekn.io.config.web;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -10,11 +10,12 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  * @author Greekn
  * @version 0.1
  * @date 2020-10-18 18:00
- * @package greekn.io.web
+ * @package greekn.io.config.web
  * @modified Greekn
  * @description
  */
 public class SpringWebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[0];
